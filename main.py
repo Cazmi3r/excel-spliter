@@ -5,6 +5,4 @@ input = "input.xlsx"
 df_dic = pd.read_excel(input, sheet_name=None)
 
 for sheet in df_dic:
-    df = df_dic[sheet]
-    df.to_excel(f"{sheet}.xlsx", index=False)
-    
+    df_dic[sheet].to_excel(f"{sheet}.xlsx", index=False)
