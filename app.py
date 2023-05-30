@@ -15,6 +15,9 @@ class App(customtkinter.CTk):
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=1)
         
+        self.label = customtkinter.CTkLabel(self, text="Please select a file!", fg_color="transparent")
+        self.label.grid(row=0, column=0, padx=10, pady=10, sticky="ewn", columnspan=2)
+        
         self.file_button = customtkinter.CTkButton(self, text="Select a File", command=self.file_button_callback)
         self.file_button.grid(row=0, column=0, padx=10, pady=10, sticky="ews")
 
@@ -28,7 +31,7 @@ class App(customtkinter.CTk):
         excel_split(self.file_path, self.output_path)
         
     def file_button_callback(self):
-        f = customtkinter.filedialog.askopenfile(parent=app,mode='rb',title='Choose a file')
+        f = customtkinter.filedialog.askopenfile(parent=self,mode='rb',title='Choose a file')
         self.file_path = Path(f.name)
         self.set_output_path()
         
